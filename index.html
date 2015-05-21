@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>pinch to zoom</title>
+    <link rel="stylesheet" href="styles/index.css">
+    <script src="libs/zoom.js"></script>
+</head>
+<body>
+    <div class="zoom-viewer">
+        <div class="zoom-body">
+            <img src="/img/img.jpeg" alt="dsaca"/>
+        </div>
+    <!--<div class="midpoint"></div>-->
+    </div>
+    <script>
+        document.ontouchmove = function(event){
+            //event.preventDefault();
+        };
+        var zoom = new Zoom(document.querySelector('.zoom-viewer'), {
+            maxZoom: 2,
+            minZoom: 1,
+            preventBounce: true
+        });
+
+    </script>
+</body>
+</html>
