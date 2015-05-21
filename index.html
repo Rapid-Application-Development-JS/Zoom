@@ -10,7 +10,7 @@
 <body>
     <div class="zoom-viewer">
         <div class="zoom-body">
-            <img src="/img/img.jpeg" alt="dsaca"/>
+            <img src="img/img.jpeg" alt="dsaca"/>
         </div>
     <!--<div class="midpoint"></div>-->
     </div>
@@ -21,7 +21,9 @@
         var zoom = new Zoom(document.querySelector('.zoom-viewer'), {
             maxZoom: 2,
             minZoom: 1,
-            preventBounce: true
+            preventBounce: false,
+            withMoving: true,
+            withMouse: true
         });
 
     </script>

@@ -1,4 +1,4 @@
-@import "/styles/reset.css" screen;
+@import "reset.css" screen;
 
 html, body {
     width: 100%;
