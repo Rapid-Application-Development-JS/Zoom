@@ -3,7 +3,7 @@ JS Zoom library with native CSS scroll
 
 ---
 
-`Zoom` allows you to easily make zoom with native scroll in desktop applications and in mobile applications.
+`Zoom` allows you to easily make zoom with native scroll in desktop and mobile applications.
 
 ###Advantages
 
@@ -42,7 +42,7 @@ Description for each zoom options:
 - `minZoom` - minimum scale size (set 1 by default)
 - `preventBounce` - prevent set more then maximum scale (less then minimum scale) and returning back to maximum (minimum) scale. This parameter doesn't work for mouse wheel. Set true if you want prevent zoom bounce or false if you don't want prevent bounce
 - `withMoving` - moving zoom body while you zooming. Could be true for moving adn false for static
-- `withMouse` - zoom with mouse zoom. Could be true for add mouse events and false for prevent mouse zooming
+- `withMouse` - zoom with mouse wheel. Could be true for adding mouse events and false for preventing mouse zooming
 
 ###Example
 
