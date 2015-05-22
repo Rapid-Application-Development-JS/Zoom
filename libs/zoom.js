@@ -6,7 +6,7 @@ function Zoom (zoomViewer, options) {
     this.options.maxZoom = this.options.maxZoom || 2;
     this.options.minZoom = this.options.minZoom || 1;
 
-    this.zoomViewer = zoomViewer;
+    this.zoomViewer = typeof zoomViewer == 'string' ? document.querySelector(zoomViewer) : zoomViewer;
     this.zoomBody = this.zoomViewer.children[0];
 
     viewerClientRect = this.zoomViewer.getBoundingClientRect();
@@ -55,8 +55,17 @@ function Zoom (zoomViewer, options) {
     this.scale = 1;
 }
 Zoom.prototype = {
-
-    _destroy: function () {
+    _mouseEvent: {
+        'mousewheel': 'mouseZoomMove',
+        'DOMMouseScroll': 'mouseZoomMove',
+        'mouseup': 'mouseZoomEnd'
+    },
+    _touchEvent: {
+        'touchmove': 'touchZoomMove',
+        'touchend': 'touchZoomEnd',
+        'touchcancel': 'touchZoomEnd'
+    },
+    destroy: function () {
         this.removeMouseListeners();
         this.removeTouchListeners();
         this.zoomViewer.removeEventListener('touchstart', this.touchStart, false);
@@ -70,6 +79,28 @@ Zoom.prototype = {
 
         this.zoomViewer = null;
         this.zoomBody = null;
+    },
+    redefineOptions: function (options) {
+        var self = this;
+        this.removeMouseListeners();
+        this.removeTouchListeners();
+        this.zoomViewer.removeEventListener('touchstart', this.touchStart, false);
+        this.zoomViewer.removeEventListener('mousedown', this.mouseDown, false);
+        for (var param in options) {
+            if (options.hasOwnProperty(param)) {
+                this.options[param] = options[param];
+            }
+        }
+        this.options.maxZoom = this.options.maxZoom || 2;
+        this.options.minZoom = this.options.minZoom || 1;
+        if (this.options.withMouse) {
+            this.mouseDown = function (e) {
+                e.stopPropagation();
+                self._mouseZoomStart(e);
+            };
+            this.zoomViewer.addEventListener('mousedown', this.mouseDown, false);
+        }
+        this.addTouchListeners();
     },
 
     _mouseZoomStart: function (e) {
@@ -262,61 +293,45 @@ Zoom.prototype = {
         }
     },
     calculateAveragePoint: function (coords) {
-        if (!this.options.withMouse) {
-            this.averX = ((coords.x1 + coords.x2) / 2);
-            this.averY = ((coords.y1 + coords.y2) / 2);
-        } else {
-            this.averX = coords.x1;
-            this.averY = coords.y1;
-        }
-
+        this.averX = ((coords.x1 + coords.x2) / 2);
+        this.averY = ((coords.y1 + coords.y2) / 2);
     },
     transform: function (x, y, s) {
         this.zoomBody.style.transform = 'translate(' + x + 'px, ' + y + 'px)' + 'scale(' + s + ') translateZ(0)';
         this.zoomBody.style['-webkit-transform'] = 'translate(' + x + 'px, ' + y + 'px)' + 'scale(' + s + ') translateZ(0)';
     },
     addMouseListeners: function () {
-        this.zoomViewer.addEventListener('mousewheel', this.mouseZoomMove, false);
-        this.zoomViewer.addEventListener('DOMMouseScroll', this.mouseZoomMove, false);
+        for (var eventName in this._mouseEvent) {
+            if (this._mouseEvent.hasOwnProperty(eventName)) {
+                this.zoomViewer.addEventListener(eventName, this[this._mouseEvent[eventName]], false);
+            }
+        }
         if (this.options.withMoving) {
             this.zoomViewer.addEventListener('mousemove', this.mouseMove, false);
         }
-        this.zoomViewer.addEventListener('mouseup', this.mouseZoomEnd, false);
     },
     removeMouseListeners: function () {
-        this.zoomViewer.removeEventListener('mousewheel', this.mouseZoomMove, false);
-        this.zoomViewer.removeEventListener('DOMMouseScroll', this.mouseZoomMove, false);
+        for (var eventName in this._mouseEvent) {
+            if (this._mouseEvent.hasOwnProperty(eventName)) {
+                this.zoomViewer.removeEventListener(eventName, this[this._mouseEvent[eventName]], false);
+            }
+        }
         if (this.options.withMoving) {
             this.zoomViewer.removeEventListener('mousemove', this.mouseMove, false);
         }
-        this.zoomViewer.removeEventListener('mouseup', this.mouseZoomEnd, false);
-    },
-    _event: {
-        'touchmove': 'touchZoomMove',
-        'touchend': 'touchZoomEnd',
-        'touchcancel': 'touchZoomEnd'
     },
     addTouchListeners: function () {
-        for (var eventName in this._event) {
-            if (this._event.hasOwnProperty(eventName)) {
-                this.zoomViewer.addEventListener(eventName, this[this._event[eventName]], false);
+        for (var eventName in this._touchEvent) {
+            if (this._touchEvent.hasOwnProperty(eventName)) {
+                this.zoomViewer.addEventListener(eventName, this[this._touchEvent[eventName]], false);
             }
         }
-//
-//
-//        this.zoomViewer.addEventListener('touchmove', this.touchZoomMove, false);
-//        this.zoomViewer.addEventListener('touchend', this.touchZoomEnd, false);
-//        this.zoomViewer.addEventListener('touchcancel', this.touchZoomEnd, false);
     },
     removeTouchListeners: function () {
-        for (var eventName in this._event) {
-            if (this._event.hasOwnProperty(eventName)) {
-                this.zoomViewer.removeEventListener(eventName, this[this._event[eventName]], false);
+        for (var eventName in this._touchEvent) {
+            if (this._touchEvent.hasOwnProperty(eventName)) {
+                this.zoomViewer.removeEventListener(eventName, this[this._touchEvent[eventName]], false);
             }
         }
-//
-//        this.zoomViewer.removeEventListener('touchmove', this.touchZoomMove, false);
-//        this.zoomViewer.removeEventListener('touchend', this.touchZoomEnd, false);
-//        this.zoomViewer.removeEventListener('touchcancel', this.touchZoomEnd, false);
     }
 };
