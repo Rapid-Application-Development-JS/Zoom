@@ -63,3 +63,8 @@ zoom.redefineOptions({
         withMouse: false
     });
 ```
+
+To destroy zoom
+```javascript
+zoom.destroy();
+```
