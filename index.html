@@ -6,26 +6,27 @@
     <title>pinch to zoom</title>
     <link rel="stylesheet" href="styles/index.css">
     <script src="libs/zoom.js"></script>
+    <script>
+        window.addEventListener('load', function () {
+            window.zoom = new Zoom(document.querySelector('.zoom-viewer'), {
+                maxZoom: 2,
+                minZoom: 1,
+                preventBounce: false,
+                withMoving: true,
+                withMouse: true
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="zoom-viewer">
         <div class="zoom-body">
-            <img src="img/img.jpeg" alt="dsaca"/>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis earum illo ipsam libero maxime mollitia, nulla obcaecati perspiciatis quasi rem repudiandae tempore voluptatem! Aperiam dicta dolores earum natus tenetur.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis earum illo ipsam libero maxime mollitia, nulla obcaecati perspiciatis quasi rem repudiandae tempore voluptatem! Aperiam dicta dolores earum natus tenetur.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis earum illo ipsam libero maxime mollitia, nulla obcaecati perspiciatis quasi rem repudiandae tempore voluptatem! Aperiam dicta dolores earum natus tenetur.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis earum illo ipsam libero maxime mollitia, nulla obcaecati perspiciatis quasi rem repudiandae tempore voluptatem! Aperiam dicta dolores earum natus tenetur.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium corporis earum illo ipsam libero maxime mollitia, nulla obcaecati perspiciatis quasi rem repudiandae tempore voluptatem! Aperiam dicta dolores earum natus tenetur.</p>
         </div>
-    <!--<div class="midpoint"></div>-->
     </div>
-    <script>
-        document.ontouchmove = function(event){
-            //event.preventDefault();
-        };
-        var zoom = new Zoom(document.querySelector('.zoom-viewer'), {
-            maxZoom: 2,
-            minZoom: 1,
-            preventBounce: false,
-            withMoving: true,
-            withMouse: true
-        });
-
-    </script>
 </body>
 </html>
