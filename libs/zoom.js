@@ -82,8 +82,7 @@ Zoom.prototype = {
             this.zoomViewer.removeEventListener('mousedown', this.mouseDown, false);
         }
 
-        this.zoomViewer.classList.add('zoom-viewer');
-        this.zoomBody.classList.add('zoom-body');
+        this.zoomBody.removeAttribute('style');
 
         this.zoomViewer = null;
         this.zoomBody = null;
@@ -94,6 +93,7 @@ Zoom.prototype = {
         this.removeTouchListeners();
         this.zoomViewer.removeEventListener('touchstart', this.touchStart, false);
         this.zoomViewer.removeEventListener('mousedown', this.mouseDown, false);
+        this.zoomBody.removeAttribute('style');
         for (var param in options) {
             if (options.hasOwnProperty(param)) {
                 this.options[param] = options[param];
@@ -109,6 +109,7 @@ Zoom.prototype = {
             this.zoomViewer.addEventListener('mousedown', this.mouseDown, false);
         }
         this.addTouchListeners();
+        this.addStyles();
     },
 
     _mouseZoomStart: function (e) {
