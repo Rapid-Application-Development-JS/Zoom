@@ -5,25 +5,56 @@ html, body {
     height: 100%;
     overflow: hidden;
 }
-.zoom-viewer {
+/*.wrap {*/
+    /*background-color: #6C929F;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+/*}*/
+.header {
     position: absolute;
-    left: 20%;
-    right: 20%;
     top: 0;
-    bottom: 50%;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background-color: #022835;
+    text-align: center;
+}
+.header .title {
+    font: 20px/22px sans-serif;
+    color: #ffffff;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.middle {
+    display: inline-block;
+    height: 100%;
+    width: 1px;
+    vertical-align: middle;
+}
+.zoom-viewer {
+    background-color: #6C929F;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 10%;
+    bottom: 10%;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 }
 .zoom-body {
-    transform: scale(1) translateZ(0);
-    -webkit-transform: scale(1) translateZ(0);
-    -webkit-transform-origin: 0px 0px;
-    -transform-origin: 0px 0px;
+    width: 100%;
 }
 .zoom-body img {
      width: 100%;
-     height: 100%;
  }
-.without-scroll {
-    overflow: hidden;
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background-color: #022835;
 }

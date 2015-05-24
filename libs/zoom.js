@@ -14,8 +14,10 @@ function Zoom (zoomViewer, options) {
     this.viewerOffsets.top = viewerClientRect.top;
     this.viewerOffsets.left = viewerClientRect.left;
 
-    this.zoomViewer.classList.add('zoom-viewer');
-    this.zoomBody.classList.add('zoom-body');
+//    this.zoomViewer.classList.add('zoom-viewer');
+//    this.zoomBody.classList.add('zoom-body');
+
+    this.addStyles();
 
     this.touchStart = function (e) {
         e.stopPropagation();
@@ -65,6 +67,12 @@ Zoom.prototype = {
         'touchend': 'touchZoomEnd',
         'touchcancel': 'touchZoomEnd'
     },
+    addStyles: function () {
+        this.zoomBody.style.transform = 'scale(1) translateZ(0)';
+        this.zoomBody.style['-webkit-transform'] = 'scale(1) translateZ(0)';
+        this.zoomBody.style['-webkit-transform-origin'] = '0px 0px';
+        this.zoomBody.style['-transform-origin'] = '0px 0px';
+    },
     destroy: function () {
         this.removeMouseListeners();
         this.removeTouchListeners();
@@ -110,7 +118,7 @@ Zoom.prototype = {
         e.preventDefault();
         var clientRect = this.zoomBody.getBoundingClientRect();
 
-        this.zoomViewer.classList.add('without-scroll');
+        this.zoomViewer.style.overflow = 'hidden';
 
         this.startLeft = -clientRect.left /*this.zoomViewer.scrollLeft*/;
         this.startTop = -clientRect.top/*this.zoomViewer.scrollTop*/;
@@ -161,7 +169,7 @@ Zoom.prototype = {
         } else if ( this.scale < this.options.minZoom ) {
             this.scale = this.options.minZoom;
         }
-        this.zoomViewer.classList.remove('without-scroll');
+        this.zoomViewer.style.overflow = 'auto';
 
         shifts = this.calculateShifts(this.scale / this.startScale);
 
@@ -195,7 +203,7 @@ Zoom.prototype = {
             }),
             clientRect = this.zoomBody.getBoundingClientRect();
 
-        this.zoomViewer.classList.add('without-scroll');
+        this.zoomViewer.style.overflow = 'hidden';
 
         this.startLeft = -clientRect.left;
         this.startTop = -clientRect.top;
@@ -258,7 +266,7 @@ Zoom.prototype = {
         } else if ( this.scale < this.options.minZoom ) {
             this.scale = this.options.minZoom;
         }
-        this.zoomViewer.classList.remove('without-scroll');
+        this.zoomViewer.style.overflow = 'auto';
 
         shifts = this.calculateShifts(this.scale / this.startScale);
 
