@@ -1,6 +1,8 @@
 # Zoom
 JS Zoom library with native CSS scroll
 
+See [live examples](http://rapid-application-development-js.github.io/Zoom/). 
+
 ---
 
 `Zoom` allows you to easily make zoom with native scroll in desktop and mobile applications.
@@ -13,14 +15,14 @@ JS Zoom library with native CSS scroll
 
 ###Usage
 
-Just include [.min.js](https://github.com/Rapid-Application-Development-JS/) and [.css](https://github.com/Rapid-Application-Development-JS/)
+Just include [zoom.js](https://github.com/Rapid-Application-Development-JS/Zoom/blob/master/libs/zoom.js)
 
-`<link rel="stylesheet" href=""/>`
+`<script src="zoom.js"></script>`
 
-`<script src=""></script>`
+Also you need to add `-webkit-overflow-scrolling: touch;` to your zoom viewer for mobile devices
 
 ###Dependence
-You can see all dependences into first item of advantages
+No dependences
 
 ###Methods
 

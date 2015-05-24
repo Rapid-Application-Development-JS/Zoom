@@ -161,7 +161,7 @@ Zoom.prototype = {
         this.transform(shifts.shiftX, shifts.shiftY, this.scale);
     },
     _mouseZoomEnd: function (e) {
-        var pdfViewer = this.zoomViewer,
+        var zoomViewer = this.zoomViewer,
             shifts;
 
         if ( this.scale > this.options.maxZoom ) {
@@ -175,8 +175,8 @@ Zoom.prototype = {
 
         this.transform(0, 0, this.scale);
 
-        pdfViewer.scrollLeft = this.startLeft - shifts.shiftX - (-this.viewerOffsets.left);
-        pdfViewer.scrollTop = this.startTop - shifts.shiftY - (-this.viewerOffsets.top);
+        zoomViewer.scrollLeft = this.startLeft - shifts.shiftX - (-this.viewerOffsets.left);
+        zoomViewer.scrollTop = this.startTop - shifts.shiftY - (-this.viewerOffsets.top);
 
         this.pinching = false;
         this.scaled = false;
@@ -259,7 +259,7 @@ Zoom.prototype = {
         if (!e.touches || e.touches.length >= 2 || !this.pinching) {
             return;
         }
-        var pdfViewer = this.zoomViewer,
+        var zoomViewer = this.zoomViewer,
             shifts;
         if ( this.scale > this.options.maxZoom ) {
             this.scale = this.options.maxZoom;
@@ -272,12 +272,12 @@ Zoom.prototype = {
 
         this.transform(0, 0, this.scale);
 
-        pdfViewer.style.display='none';
-        pdfViewer.offsetHeight;
-        pdfViewer.style.display='block';
+        zoomViewer.style.display='none';
+        zoomViewer.offsetHeight;
+        zoomViewer.style.display='block';
 
-        pdfViewer.scrollLeft = this.startLeft - shifts.shiftX - (-this.viewerOffsets.left);
-        pdfViewer.scrollTop = this.startTop - shifts.shiftY - (-this.viewerOffsets.top);
+        zoomViewer.scrollLeft = this.startLeft - shifts.shiftX - (-this.viewerOffsets.left);
+        zoomViewer.scrollTop = this.startTop - shifts.shiftY - (-this.viewerOffsets.top);
 
         this.pinching = false;
         this.scaled = false;
