@@ -1,0 +1,29 @@
+{
+  "name": "Zoom",
+  "version": "0.0.1",
+  "description": "Zoom allows you to easily make zoom with native scroll in desktop and mobile applications.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rapid-Application-Development-JS/Zoom.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rapid-Application-Development-JS/Zoom/issues"
+  },
+  "homepage": "https://github.com/Rapid-Application-Development-JS/Zoom",
+  "dependencies": {
+    "gulp": "^3.8.11"
+  },
+  "devDependencies": {
+    "gulp-rename": "^1.2.2",
+    "gulp-uglifyjs": "^0.6.2"
+  }
+}

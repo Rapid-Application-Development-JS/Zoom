@@ -1,0 +1,25 @@
+{
+  "name": "Zoom",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Rapid-Application-Development-JS/Zoom",
+  "authors": [
+    "Maxim Shevchenko"
+  ],
+  "description": "Zoom allows you to easily make zoom with native scroll in desktop and mobile applications.",
+  "keywords": [
+    "Zoom",
+    "native",
+    "scroll"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "requirejs": "~2.1.17"
+  }
+}
