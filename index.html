@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <title>pinch to zoom</title>
-    <link rel="stylesheet" href="styles/index.css">
-    <script src="libs/zoom.js"></script>
-    <script>
-        window.addEventListener('load', function () {
-            window.zoom = new Zoom(document.querySelector('.zoom-viewer'), {
-                maxZoom: 2,
-                minZoom: 1,
-                preventBounce: false,
-                withMoving: true,
-                withMouse: true
-            });
-        });
-    </script>
-</head>
-<body>
-<div class="wrap">
-        <div class="header">
-            <div class="middle"></div>
-            <div class="title">Zoom</div>
-        </div>
-        <div class="zoom-viewer">
-            <div class="zoom-body">
-                <img src="img/img.jpg" alt="dwq"/>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
+        <title>pinch to zoom</title>
+        <link rel="stylesheet" href="styles/index.css">
+        <script src="libs/zoom.js"></script>
+        <script>
+                                window.addEventListener('load', function () {
+                                Zoom(document.querySelector('.zoom-viewer'), {
+                                        maxZoom: 2,
+                                        minZoom: 1,
+                                        preventBounce: false,
+                                        withMoving: true,
+                                        withMouse: true
+                                    });
+                                    new Zoom(document.querySelector('.second'), {
+                                        maxZoom: 200,
+                                        minZoom: 1,
+                                        withMoving: false,
+                                        withMouse: false
+                                    });
+                                });
+        </script>
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="header">
+                <div class="title">Zoom</div>
             </div>
+            <div class="example">
+                <div class="zoom-viewer first">
+                    <div class="zoom-body">
+                        <img src="img/img.jpg" alt="dwq"/>
+                    </div>
+                </div>
+            </div>
+            <div class="example">
+                <div class="zoom-viewer second">
+                    <div class="zoom-body">
+                        <img src="img/img.jpg" alt="dwq"/>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="footer"></div>
-</div>
-</body>
+    </body>
 </html>

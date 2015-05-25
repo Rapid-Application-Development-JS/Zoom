@@ -4,19 +4,11 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background: #6C929F;
 }
-/*.wrap {*/
-    /*background-color: #6C929F;*/
-    /*width: 100%;*/
-    /*height: 100%;*/
-/*}*/
 .header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10%;
     background-color: #022835;
+    padding: 20px 0;
     text-align: center;
 }
 .header .title {
@@ -27,21 +19,22 @@ html, body {
     vertical-align: middle;
 }
 
-.middle {
-    display: inline-block;
-    height: 100%;
-    width: 1px;
-    vertical-align: middle;
+.example {
+    padding: 20px 0;
+    width: 960px;
+    margin: 0 auto;
+    border-bottom: 1px solid #022835;
+    overflow: hidden;
 }
+
+
 .zoom-viewer {
-    background-color: #6C929F;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 10%;
-    bottom: 10%;
+    float: left;
+    width: 400px;
+    height: 400px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+
 }
 .zoom-body {
     width: 100%;
