@@ -10,6 +10,8 @@ html, body {
     background-color: #022835;
     padding: 20px 0;
     text-align: center;
+    box-sizing: border-box;
+    height: 62px;
 }
 .header .title {
     font: 20px/22px sans-serif;
@@ -19,19 +21,14 @@ html, body {
     vertical-align: middle;
 }
 
-.example {
-    padding: 20px 0;
-    width: 960px;
-    margin: 0 auto;
-    border-bottom: 1px solid #022835;
-    overflow: hidden;
-}
 
 
 .zoom-viewer {
-    float: left;
-    width: 400px;
-    height: 400px;
+    position: absolute;
+    top: 62px;
+    bottom: 0;
+    left: 0;
+    right: 0;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 
